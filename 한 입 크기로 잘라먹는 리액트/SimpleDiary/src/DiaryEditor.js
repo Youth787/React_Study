@@ -1,6 +1,6 @@
 import {useRef, useState} from "react";
 
-const DiaryEditor = () =>{
+const DiaryEditor = ({onCreate}) =>{
 
     const authorInput = useRef();
     const contentInput = useRef();
@@ -31,8 +31,13 @@ const DiaryEditor = () =>{
             return;
         }
         
-        console.log(state);
+        onCreate(state.author, state.content, state.emotion);
         alert("저장 성공");
+        setState({
+            author:"",
+            content:"",
+            emotion:1.
+        })
     }
 
     return (
@@ -54,7 +59,8 @@ const DiaryEditor = () =>{
             onChange={handleChangeState}
             /> 
         </div>
-        <div>오늘의 감정점수 : 
+        <div>
+        <span>오늘의 감정점수 : </span>
             <select name ='emotion' value={state.emotion} onChange={handleChangeState}>
                 <option value={1}>1</option>
                 <option value={2}>2</option>

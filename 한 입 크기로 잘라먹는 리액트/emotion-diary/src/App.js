@@ -32,7 +32,7 @@ const reducer = (state, action) => {
       return state;
   }
 
-  localStorage.setItem("diary", JSON.stringify(newState));
+  localStorage.setItem("diary", JSON.stringify(newState)); // 직렬화시켜준다.(객체를 문자열로 바꿔준다.)
   return newState;
 };
 
